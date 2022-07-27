@@ -1,0 +1,98 @@
+---
+- name: Update subscription manager
+  command: subscription-manager refresh
+
+- name: Install iptables
+  yum: 
+    name: iptables-services
+
+- name: ifcfg-ens224 config
+  lineinfile:
+    dest: /etc/sysconfig/network-scripts/ifcfg-ens224
+    line: GATEWAY={{ hostvars['h-gateway-instance']['ansible_host'] }}
+
+- name: Remove /etc/sysconfig/network
+  become_user: root
+  ansible.builtin.file:
+    path: /etc/sysconfig/network
+    state: absent
+
+- name: /etc/sysconfig/network config
+  blockinfile:
+    dest: /etc/sysconfig/network
+    block: |
+     NETWORKING=yes 
+     HOSTNAME=nat 
+     GATEWAY={{ hostvars['h-gateway-instance']['ansible_host'] }}
+    create: yes
+
+- name: Iptables flush
+  iptables:
+    flush: yes
+
+- name: Iptables flush
+  ansible.builtin.iptables:
+    flush: yes
+    table: nat
+
+- name: Iptables flush
+  ansible.builtin.iptables:
+    flush: yes
+    table: mangle
+
+# - name: Iptables delete
+#   ansible.builtin.iptables:
+#     state: absent
+#     chain_management: true
+#     chain: [POSTROUTING, INPUT, OUTPUT, PREROUTING, FORWARD]
+#     table: nat
+
+- name: drop nat
+  ansible.builtin.iptables:
+    chain: [POSTROUTING, INPUT, OUTPUT, PREROUTING, FORWARD]
+    state: absent
+
+- name: drop nat
+  ansible.builtin.iptables:
+    chain: [POSTROUTING, INPUT, OUTPUT, PREROUTING, FORWARD]
+    table: nat
+    state: absent
+
+- name: drop nat
+  ansible.builtin.iptables:
+    chain: [POSTROUTING, INPUT, OUTPUT, PREROUTING, FORWARD]
+    table: mangle
+    state: absent
+
+- name: Iptables IP forwarding and masquerading
+  ansible.builtin.iptables:
+    chain: POSTROUTING
+    out_interface: ens192
+    jump: MASQUERADE
+    table: nat
+
+- name: Iptables IP forwarding and masquerading
+  ansible.builtin.iptables:
+    chain: FORWARD
+    in_interface: ens224    
+    jump: ACCEPT
+
+- name: Allow kernel forwarding
+  ansible.posix.sysctl:
+    name: net.ipv4.ip_forward
+    value: '1'
+    sysctl_set: yes
+    state: present
+
+- name: Save iptables
+  shell: service iptables save
+
+- name: Restart iptables
+  service:
+    name: iptables
+    state: restarted
+
+- name: Restart network
+  service:
+    name: network
+    state: restarted
