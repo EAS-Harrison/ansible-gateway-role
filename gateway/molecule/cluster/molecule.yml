@@ -37,8 +37,11 @@ platforms:
       num_cpus: 2 
       memory_mb: 2048
     networks:
-      - name: harrison
+      - name: VM Network 
         type: dhcp
+      - name: harrison
+        ip: 10.0.0.3
+        netmask: 255.255.255.0
     group: dns
   - name: h-dhcp-instance
     template: RHEL79-Thin
@@ -46,8 +49,12 @@ platforms:
       num_cpus: 2 
       memory_mb: 2048
     networks:
-      - name: harrison
+      - name: VM Network 
         type: dhcp
+      - name: harrison
+        ip: 10.0.0.4
+        netmask: 255.255.255.0
+        gateway: 10.0.0.1
     group: dhcp
 provisioner:
   name: ansible

@@ -2,7 +2,7 @@ dependency:
   name: galaxy
 driver:
   name: vmware
- vcenter_hostname: ${VCENTER_HOSTNAME}
+  vcenter_hostname: ${VCENTER_HOSTNAME}
   vcenter_username: ${VCENTER_USERNAME}
   vcenter_password: ${VCENTER_PASSWORD}
   validate_certs: false
