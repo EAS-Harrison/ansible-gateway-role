@@ -10,9 +10,13 @@
   debug: var=hostvars['h-gateway-instance']['ansible_host'] 
 
 - name: ifcfg-ens224 config
-  lineinfile:
+  blockinfile:
     dest: /etc/sysconfig/network-scripts/ifcfg-ens224
-    line: GATEWAY={{ hostvars['h-gateway-instance']['ansible_host'] }}
+    block: |
+      GATEWAY={{ hostvars['h-gateway-instance']['ansible_host'] }}
+      DNS1={{ dns }}
+      DEFROUTE=yes
+      DOMAIN={{ domain_name }}
 
 - name: Remove /etc/sysconfig/network
   become_user: root
