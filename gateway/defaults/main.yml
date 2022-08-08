@@ -1,2 +1,6 @@
 ---
-# defaults file for gateway
+domain_name: harrison.local
+dns_ip: 10.0.0.3
+gateway_ip: 10.0.0.1
+subnet_mask: 255.255.255.0
+subnet: 10.0.0.0
