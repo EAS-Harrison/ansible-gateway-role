@@ -7,10 +7,8 @@
     name: iptables-services
 
 - name: debug hostvars
-  debug: var=hostvars['h-gateway-instance']['ansible_host'] 
-
-- name: debug hostvars
-  debug: var= ansible_facts
+  debug: 
+    msg: "ansible_facts" 
 
 - name: ifcfg-ens224 config
   blockinfile:
