@@ -6,6 +6,10 @@
   debug: 
     var: ansible_facts.interfaces[2] 
 
+- name: debug hostvars
+  debug: 
+    var: ansible_facts 
+
 - name: Install iptables
   yum: 
     name: iptables-services
