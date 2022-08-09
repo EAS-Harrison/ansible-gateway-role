@@ -9,6 +9,9 @@
 - name: debug hostvars
   debug: var=hostvars['h-gateway-instance']['ansible_host'] 
 
+- name: debug hostvars
+  debug: var= ansible_facts
+
 - name: ifcfg-ens224 config
   blockinfile:
     dest: /etc/sysconfig/network-scripts/ifcfg-ens224
