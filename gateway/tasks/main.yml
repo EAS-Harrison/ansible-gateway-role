@@ -14,9 +14,9 @@
     dest: /etc/sysconfig/network-scripts/ifcfg-ens224
     block: |
       GATEWAY={{ hostvars['h-gateway-instance']['ansible_host'] }}
-      DNS1="{{ dns_ip | default('default_value') }}"
+      DNS1="{{ dns_ip }}"
       DEFROUTE=yes
-      DOMAIN="{{ domain_name | default('default_value') }}"
+      DOMAIN="{{ domain_name }}"
 
 - name: Remove /etc/sysconfig/network
   become_user: root
