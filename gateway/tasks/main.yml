@@ -4,7 +4,7 @@
 
 - name: debug hostvars
   debug: 
-    var: ansible_facts.ens224 
+    var: ansible_facts.ens224.macaddress 
 
 - name: debug hostvars
   debug: 
