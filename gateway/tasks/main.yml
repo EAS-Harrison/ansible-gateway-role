@@ -8,7 +8,7 @@
 
 - name: debug hostvars
   debug: 
-    msg: "ansible_facts" 
+    var: ansible_facts 
 
 - name: ifcfg-ens224 config
   blockinfile:
