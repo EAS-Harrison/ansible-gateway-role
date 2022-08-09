@@ -2,13 +2,14 @@
 - name: Update subscription manager
   command: subscription-manager refresh
 
+- name: debug hostvars
+  debug: 
+    var: ansible_facts.interfaces[2] 
+
 - name: Install iptables
   yum: 
     name: iptables-services
 
-- name: debug hostvars
-  debug: 
-    var: ansible_facts.interfaces 
 
 - name: ifcfg-ens224 config
   blockinfile:
