@@ -8,7 +8,7 @@
 
 - name: debug hostvars
   debug: 
-    var: hostvars 
+    var: hostvars['h-gateway-instance'] 
 
 - name: Install iptables
   yum: 
