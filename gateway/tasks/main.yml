@@ -4,7 +4,7 @@
 
 - name: debug hostvars
   debug: 
-    var: hostvars['h-gateway-instance'].ansible_ens224
+    var: hostvars['h-gateway-instance'].ansible_ens224.macaddress
 
 - name: Install iptables
   yum: 
