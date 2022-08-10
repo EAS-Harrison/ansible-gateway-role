@@ -2,13 +2,9 @@
 - name: Update subscription manager
   command: subscription-manager refresh
 
-- name: debug hostvars
-  debug: 
-    var: ansible_facts.ens224.macaddress 
-
-- name: debug hostvars
-  debug: 
-    var: ansible_facts
+# - name: debug hostvars
+#   debug: 
+#     var: ansible_facts
 
 - name: Install iptables
   yum: 
