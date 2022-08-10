@@ -1,5 +1,7 @@
 dependency:
   name: galaxy
+  options:
+    role-file: requirements.yaml
 driver:
   name: vmware
   vcenter_hostname: ${VCENTER_HOSTNAME}
@@ -31,6 +33,18 @@ platforms:
         ip: 10.0.0.1
         netmask: 255.255.255.0
     group: gateway
+  - name: h-dhcp-instance
+    template: RHEL79-Thin
+    hardware:
+      num_cpus: 2 
+      memory_mb: 2048
+    networks:
+      - name: VM Network 
+        type: dhcp
+      - name: harrison
+        ip: 10.0.0.2
+        netmask: 255.255.255.0
+    group: dhcp
   - name: h-dns-instance
     template: RHEL79-Thin
     hardware:
@@ -43,19 +57,6 @@ platforms:
         ip: 10.0.0.3
         netmask: 255.255.255.0
     group: dns
-  - name: h-dhcp-instance
-    template: RHEL79-Thin
-    hardware:
-      num_cpus: 2 
-      memory_mb: 2048
-    networks:
-      - name: VM Network 
-        type: dhcp
-      - name: harrison
-        ip: 10.0.0.4
-        netmask: 255.255.255.0
-        gateway: 10.0.0.1
-    group: dhcp
 provisioner:
   name: ansible
   env:
