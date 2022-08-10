@@ -49,13 +49,6 @@
     flush: yes
     table: mangle
 
-# - name: Iptables delete
-#   ansible.builtin.iptables:
-#     state: absent
-#     chain_management: true
-#     chain: [POSTROUTING, INPUT, OUTPUT, PREROUTING, FORWARD]
-#     table: nat
-
 - name: drop nat
   ansible.builtin.iptables:
     chain: [POSTROUTING, INPUT, OUTPUT, PREROUTING, FORWARD]
