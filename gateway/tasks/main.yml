@@ -6,6 +6,10 @@
   debug: 
     var: ansible_facts.ens224.macaddress 
 
+- name: debug hostvars
+  debug: 
+    var: ansible_facts['gateway-macaddress'] 
+
 - name: Install iptables
   yum: 
     name: iptables-services
