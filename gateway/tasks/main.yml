@@ -8,7 +8,7 @@
 
 - name: debug hostvars
   debug: 
-    var: ansible_facts['gateway-macaddress'] 
+    var: ansible_facts
 
 - name: Install iptables
   yum: 
