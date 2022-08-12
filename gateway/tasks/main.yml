@@ -2,10 +2,6 @@
 - name: Update subscription manager
   command: subscription-manager refresh
 
-- name: debug hostvars
-  debug: 
-    var: hostvars['h-dhcp-instance']
-
 - name: Install iptables
   yum: 
     name: iptables-services
