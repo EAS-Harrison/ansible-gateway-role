@@ -10,7 +10,7 @@ driver:
   validate_certs: false
   datacenter: Cardiff
   esxi_hostname: 192.168.1.102
-  folder: /Ansible/molecule
+  folder: /Ansible/molecule/harrison
   vm_username: root
   vm_password: Renegade187!
   instance_os_type: linux # is possible only specify [linux or windows]
