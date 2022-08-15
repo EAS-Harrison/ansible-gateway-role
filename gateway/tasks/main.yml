@@ -4,7 +4,7 @@
 
 - name: Debug hostvars
   debug:
-    var: hostvars.h-dhcp-instance.groups
+    var: hostvars.h-dhcp-instance
 
 - name: Install iptables
   yum: 
