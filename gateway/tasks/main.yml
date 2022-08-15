@@ -4,7 +4,7 @@
 
 - name: Debug hostvars
   debug:
-    var: ansible_facts
+    var: groups['all'] 
 
 - name: Install iptables
   yum: 
