@@ -2,6 +2,10 @@
 - name: Update subscription manager
   command: subscription-manager refresh
 
+- name: Debug hostvars
+  debug:
+    var: hostvars
+
 - name: Install iptables
   yum: 
     name: iptables-services
