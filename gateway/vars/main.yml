@@ -4,6 +4,6 @@ dns_ip: 10.0.0.3
 gateway_ip: 10.0.0.1
 subnet_mask: 255.255.255.0
 subnet: 10.0.0.0
-dhcp_macaddress: "{{hostvars['h-dhcp-instance'].ansible_ens224.macaddress}}" 
-gateway_macaddress: "{{ hostvars['h-gateway-instance'].ansible_ens224.macaddress }}"
-dns_macaddress: "{{ hostvars['h-dns-instance'].ansible_ens224.macaddress }}"
+dhcp_macaddress: "{{hostvars['h-dhcp'].ansible_ens224.macaddress}}" 
+gateway_macaddress: "{{ hostvars['h-gateway'].ansible_ens224.macaddress }}"
+dns_macaddress: "{{ hostvars['h-dns'].ansible_ens224.macaddress }}"
