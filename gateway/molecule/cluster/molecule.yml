@@ -21,7 +21,7 @@ driver:
   #winrm_server_cert_validation: ignore # is the server certificate validation mode
   # The below list is possible to define DNS nameservers
 platforms:
-  - name: h-gateway-instance
+  - name: h-gateway
     template: RHEL79-Thin
     hardware:
       num_cpus: 2 
@@ -33,7 +33,7 @@ platforms:
         ip: 10.0.0.1
         netmask: 255.255.255.0
     group: gateway
-  - name: h-dhcp-instance
+  - name: h-dhcp
     template: RHEL79-Thin
     hardware:
       num_cpus: 2 
@@ -45,7 +45,7 @@ platforms:
         ip: 10.0.0.2
         netmask: 255.255.255.0
     group: dhcp
-  - name: h-dns-instance
+  - name: h-dns
     template: RHEL79-Thin
     hardware:
       num_cpus: 2 
